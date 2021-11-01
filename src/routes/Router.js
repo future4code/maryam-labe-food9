@@ -1,12 +1,12 @@
 import React from "react";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
-import CartPage from "../pages/CartPage"
-import CreateLoginPage from "../pages/CreateLoginPage"
-import HomePage from "../pages/HomePage"
-import HomeScreenPage from "../pages/HomeScreenPage"
-import LoginPage from "../pages/LoginPage"
-import ProfilePage from "../pages/ProfilePage"
-import RestaurantDetailsPage from "../pages/RestaurantDetailsPage"
+import CartPage from "../pages/CartPage/CartPage";
+import CreateLoginPage from "../pages/CreateLoginPage/CreateLoginPage"
+import HomePage from "../pages/HomePage/HomePage"
+import HomeScreenPage from "../pages/HomeScreenPage/HomeScreenPage"
+import LoginPage from "../pages/LoginPage/LoginPage"
+ import ProfilePage from "../pages/ProfilePage/ProfilePage"
+import RestaurantDetailsPage from "../pages/RestaurantDetailsPage/RestaurantDetailsPage"
 import AddAddressPage from "../pages/AddAddressPage/AddAddressPage";
 
 const Router = () => {
