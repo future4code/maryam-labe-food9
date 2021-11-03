@@ -5,16 +5,16 @@ display:flex;
 flex-direction: column;
 align-items:center;
 width:100vw;
-margin-top: 10vh;
 `
 export const TextCadastro = styled.div `
-font: impact;
 color: black;
 font-size: larger;
 `
-export const LogoImage = styled.div `
-width: 70vw;
-max-width: 350px;
+export const LogoImage = styled.img `
+width: 6.5rem;
+height: 3.625rem;
+margin: 1.5rem 8rem 1rem;
+object-fit: contain;
 `
 
 export const InputCadastroContainer = styled.div `
