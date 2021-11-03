@@ -3,17 +3,12 @@ import useForm from "../../hooks/useForm"
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import {useHistory} from 'react-router-dom'
-import logo2x from '../../assents/logo2x.png'
+import logo3x from '../../assents/logo3x.png'
 import styled from "styled-components"
-import theme from "../../constants/theme"
 import { LoginContainer, LogoImage, TextoLogin, InputLoginContainer,LoginFormContainer, SignUpButtonContainer } from "./styled"
 import axios from "axios"
 import { BASE_URL } from "../../constants/urls"
-import { ThemeProvider } from "@material-ui/styles";
-
-export const goToLogin = (history) => {
-    history.push("/login")
-}
+import { Typography } from "@material-ui/core"
 
 export const goToCadastro = (history) => {
     history.push("/cadastro")
@@ -46,14 +41,13 @@ login(form, clear)
   }
 
     return(
-        <ThemeProvider theme={theme}>
         <LoginContainer>
-            <LogoImage src={logo2x} />
-            
-            <TextoLogin color={'black'}
-            typography={"primary"}> 
-                ENTRAR
+            <LogoImage src= {logo3x} />
+            <Typography>
+            <TextoLogin color={'black'}>
+               <strong> Entrar </strong>
             </TextoLogin> 
+            </Typography>
             
             <LoginFormContainer>
             <form onSubmit ={onSubmitForm}>
@@ -88,7 +82,7 @@ login(form, clear)
           color={"primary"}
          >
 
-            <strong>Entrar</strong></Button>
+     <strong>Entrar</strong></Button>
             
     
             
@@ -106,7 +100,6 @@ login(form, clear)
            > <strong>Não possui cadastro? Clique aqui. </strong></Button>
         </SignUpButtonContainer>
         </LoginContainer>
-        </ThemeProvider>
       
     )
 }
