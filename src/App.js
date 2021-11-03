@@ -1,11 +1,10 @@
-import React from 'react';
+import React from 'react'
+import Router from './routes/Router';
 
-
-
-function App() {
+const  App = () => {
   return (
     <div>
-      <h1>Labe-Food9</h1>
+    <Router/>
     </div>
   );
 }
