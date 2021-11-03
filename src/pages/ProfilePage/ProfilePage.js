@@ -1,36 +1,73 @@
-import React from "react"
-import { useHistory } from "react-router"
-import { ContainerProfilePage, RenderContainer , TitleLogout, LogoutContainer, UserContainer, UserData, AddresContainer, AddresTitle, OrderBar} from "./styled"
+import React, { useContext, useEffect } from "react";
+import GlobalStateContext from "../../Global/GlobalStateContext";
+import { useHistory } from "react-router-dom";
+import useAuthorization from "../../hooks/useAuthentication"
+import useRequestData from "../../hooks/useRequestData";
+import edit from "../../assets/Img/edit.svg";
+import { AddressContainer, AddresTitle, EditAddress, EditProfile, H4, LogoutContainer, MainContainerProfilePage, OrderBar, RenderContainer, Title, UserContainer, UserData } from "./styled";
+import OrderCard from "../../components/OrderCard/OrderCard";
 
+export default function ProfilePage() {
+  const history = useHistory();
+  const userProfile = useRequestData("/profile");
+  const userOrderHistory = useRequestData("/orders/history");
 
-const ProfilePage = () => {
-    const history = useHistory()
+  useAuthorization();
+  const { profile, setProfile, orderHistory, setOrderHistory } = useContext(
+    GlobalStateContext
+  );
 
-    return(
-        <ContainerProfilePage>
-            <RenderContainer>
-                <LogoutContainer>
-            <h4>Editar Perfil</h4>
-            <TitleLogout>Logout</TitleLogout>
-                </LogoutContainer>
-                <UserContainer>
-                    <UserData>
-                        <h1>Nome Usuario Cadastrado</h1>
-                    </UserData>
-                    <UserData>
-                        <h1>email</h1>
-                    </UserData>
-                    <UserData>
-                        <h1>CPF</h1>
-                    </UserData>
-                    <AddresContainer>
-                     <AddresTitle>Endereço do Cadastrado</AddresTitle>
-                        </AddresContainer> 
-                        <OrderBar>Historico de Pedidos</OrderBar>
-                </UserContainer>
-            </RenderContainer>
-        </ContainerProfilePage>
-    )
+  useEffect(() => {
+    if (userProfile[0] && userOrderHistory[0]) {
+      setProfile(userProfile[0].user);
+      setOrderHistory(userOrderHistory[0].orders);
+    } else {
+    }
+  }, [userProfile, userOrderHistory]);
+
+  return (
+    <MainContainerProfilePage>
+      <RenderContainer >
+        <LogoutContainer>
+        <H4>Editar Perfil</H4>
+        <Title onClick={()=> {localStorage.clear()
+          history.push('/')
+        }}>Logout</Title>
+
+        </LogoutContainer>
+        <UserContainer>
+          <UserData>{profile.name}</UserData>
+          <EditProfile
+            src={edit}
+            onClick={() => history.push("/update_profile")}
+          ></EditProfile>
+          <UserData>{profile.email}</UserData>
+          <UserData>{profile.cpf}</UserData>
+        </UserContainer>
+        <AddressContainer>
+          <AddresTitle>Endereço Cadastrado</AddresTitle>
+          <EditAddress
+            src={edit}
+            onClick={() => history.push("/address_form")}
+          ></EditAddress>
+          <UserData>{profile.address}</UserData>
+        </AddressContainer>
+        <OrderBar>Históricos de Pedidos</OrderBar>
+        {orderHistory ? (
+          orderHistory.map((order) => {
+            return (
+              <OrderCard
+                key={order.createdAt}
+                totalPrice={order.totalPrice}
+                restaurantName={order.restaurantName}
+                date={order.expiresAt}
+              />
+            );
+          })
+        ) : (
+          <p>Você não realizou nenhum pedido</p>
+        )}
+      </RenderContainer>
+    </MainContainerProfilePage>
+  );
 }
-
-export default ProfilePage
