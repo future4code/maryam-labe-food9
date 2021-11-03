@@ -1,3 +1,13 @@
+
+import React from 'react'
+import Router from './routes/Router';
+
+const  App = () => {
+  return (
+    <div>
+    <Router/>
+    </div>
+
 import React from "react";
 import Router from "../src/routes/Router";
 import { ThemeProvider } from "@material-ui/styles";
@@ -8,6 +18,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <Router />
     </ThemeProvider>
+
   );
 };
 
