@@ -3,19 +3,16 @@ import useForm from "../../hooks/useForm"
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import {useHistory} from 'react-router-dom'
-import logo2x from '../../assents/logo2x.png'
+import logo3x from '../../assents/logo3x.png'
 import styled from "styled-components"
 import { CadastroContainer, LogoImage, TextCadastro, InputCadastroContainer,CadastroFormContainer } from "./styled"
 import axios from "axios"
 import { BASE_URL } from "../../constants/urls"
-import { ThemeProvider } from "@material-ui/styles";
+import { Typography } from "@material-ui/core"
 
-export const goToLogin = (history) => {
-    history.push("/login")
-}
 
-export const goToCadastro = (history) => {
-    history.push("/cadastro")
+export const goToAddAdressPage = (history) => {
+    history.push("/endereço")
 }
 
 export const goToHomeScreenPage = (history) => {
@@ -26,7 +23,7 @@ export const goToHomeScreenPage = (history) => {
 const CreateLoginPage = () => {
 
     const history = useHistory()
-    const [form, onChange, clear] = useForm({email:"", password:""})
+    const [form, onChange, clear] = useForm({email:"", cpf: "", password:""})
         
     const onSubmitForm = (event) => {
     event.preventDefault()
@@ -37,7 +34,7 @@ const CreateLoginPage = () => {
           .then((res) => {
               localStorage.setItem("token", res.data.token)
               clear()
-              goToHomeScreenPage(history)
+              goToAddAdressPage(history)
           })
           .catch((err) => alert ("Erro no Cadastro"))
       }
@@ -45,12 +42,12 @@ const CreateLoginPage = () => {
     return(
 
         <CadastroContainer>
-            <LogoImage src={logo2x} />
-            
-            <TextCadastro color={'black'}
-            typography={"primary"}> 
+            <LogoImage src={logo3x} />
+            <Typography>
+            <TextCadastro color={'black'}>
                <strong> Cadastrar </strong>
             </TextCadastro> 
+            </Typography>
             
             <CadastroFormContainer>
             <form onSubmit ={onSubmitForm}>
@@ -112,7 +109,7 @@ const CreateLoginPage = () => {
         />
   
     </InputCadastroContainer>
-          <Button
+          <Button onClick={() => goToAddAdressPage(history)}
           type={"submit"}
           fullWidth
           variant={'contained'}
