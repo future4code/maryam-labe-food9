@@ -1,73 +1,117 @@
-import React, { useContext, useEffect } from "react";
-import GlobalStateContext from "../../Global/GlobalStateContext";
+import React, { useState, useEffect } from "react";
+import editIcon from "../../assents/editIcon.png";
+import axios from "axios";
 import { useHistory } from "react-router-dom";
-import useAuthorization from "../../hooks/useAuthentication"
-import useRequestData from "../../hooks/useRequestData";
-import edit from "../../assets/Img/edit.svg";
-import { AddressContainer, AddresTitle, EditAddress, EditProfile, H4, LogoutContainer, MainContainerProfilePage, OrderBar, RenderContainer, Title, UserContainer, UserData } from "./styled";
-import OrderCard from "../../components/OrderCard/OrderCard";
+import { CardsStyled, CardsStyled2, Container, Day, Endereco, EnderecoCadastrado, Header, Img, Pedido, PedidosCard, PerfilStyle, Rectangle, RestaurantName, SubTotal, Text } from "./styled";
+// import Header from "../Header/Header";
+// import Footer from "../Footer/Footer";
 
-export default function ProfilePage() {
+function ProfilePage() {
+  const [profile, setProfile] = useState("");
+  const [historys, setHistorys] = useState([]);
+
   const history = useHistory();
-  const userProfile = useRequestData("/profile");
-  const userOrderHistory = useRequestData("/orders/history");
+  const goToProfileEdit = () => {
+  history.push("/editProfile");
+  };
+  const goToAddressEdit = () => {
+    history.push("/editAddress");
+  };
 
-  useAuthorization();
-  const { profile, setProfile, orderHistory, setOrderHistory } = useContext(
-    GlobalStateContext
-  );
+  const getProfile = () => {
+    const token = window.localStorage.getItem("token");
 
+    const axiosConfig = {
+      headers: {
+        auth: token,
+      },
+    };
+
+    axios
+      .get(
+        "https://us-central1-missao-newton.cloudfunctions.net/fourFoodC/profile",
+        axiosConfig
+      )
+      .then((response) => {
+        setProfile(response.data.user);
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const getHistorys = () => {
+    const token = window.localStorage.getItem("token");
+
+    const axiosConfig = {
+      headers: {
+        auth: token,
+      },
+    };
+    axios
+      .get(
+        "https://us-central1-missao-newton.cloudfunctions.net/fourFoodC/orders/history",
+        axiosConfig
+      )
+      .then((response) => {
+        setHistorys(response.data.orders);
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   useEffect(() => {
-    if (userProfile[0] && userOrderHistory[0]) {
-      setProfile(userProfile[0].user);
-      setOrderHistory(userOrderHistory[0].orders);
-    } else {
-    }
-  }, [userProfile, userOrderHistory]);
+    getProfile();
+    getHistorys();
+  }, []);
 
   return (
-    <MainContainerProfilePage>
-      <RenderContainer >
-        <LogoutContainer>
-        <H4>Editar Perfil</H4>
-        <Title onClick={()=> {localStorage.clear()
-          history.push('/')
-        }}>Logout</Title>
-
-        </LogoutContainer>
-        <UserContainer>
-          <UserData>{profile.name}</UserData>
-          <EditProfile
-            src={edit}
-            onClick={() => history.push("/update_profile")}
-          ></EditProfile>
-          <UserData>{profile.email}</UserData>
-          <UserData>{profile.cpf}</UserData>
-        </UserContainer>
-        <AddressContainer>
-          <AddresTitle>Endereço Cadastrado</AddresTitle>
-          <EditAddress
-            src={edit}
-            onClick={() => history.push("/address_form")}
-          ></EditAddress>
-          <UserData>{profile.address}</UserData>
-        </AddressContainer>
-        <OrderBar>Históricos de Pedidos</OrderBar>
-        {orderHistory ? (
-          orderHistory.map((order) => {
-            return (
-              <OrderCard
-                key={order.createdAt}
-                totalPrice={order.totalPrice}
-                restaurantName={order.restaurantName}
-                date={order.expiresAt}
-              />
-            );
-          })
-        ) : (
-          <p>Você não realizou nenhum pedido</p>
-        )}
-      </RenderContainer>
-    </MainContainerProfilePage>
+    <>
+      <Container>
+        <Header title= "Meu Perfil" />
+        <CardsStyled>
+          <PerfilStyle>
+            {profile.name} <Img onClick={goToProfileEdit} src={editIcon} />
+          </PerfilStyle>
+          <PerfilStyle>{profile.email}</PerfilStyle>
+          <PerfilStyle>{profile.cpf}</PerfilStyle>
+        </CardsStyled>
+        <CardsStyled2>
+          <EnderecoCadastrado>
+            Endereço Cadastrado
+            <Img onClick={goToAddressEdit} src={editIcon} />
+          </EnderecoCadastrado>
+          <Endereco>{profile.address}</Endereco>
+        </CardsStyled2>
+        <Pedido>Histórico de pedidos</Pedido>
+        <hr></hr>
+        <CardsStyled>
+          <Text>
+            {historys.length > 0
+              ? historys.map((order) => {
+                  const date = new Date(order.expiresAt).toLocaleDateString(
+                    "pt-br"
+                  );
+                  return (
+                    <PedidosCard>
+                      <Rectangle>
+                        <RestaurantName>{order.restaurantName}</RestaurantName>
+                        <Day>{date}</Day>
+                        <SubTotal>
+                          <p>SUBTOTAL R${order.totalPrice}</p>
+                        </SubTotal>
+                      </Rectangle>
+                    </PedidosCard>
+                  );
+                })
+              : "Você não realizou nenhum pedido "}
+          </Text>
+        </CardsStyled>
+      </Container>
+    </>
   );
 }
+
+export default ProfilePage;

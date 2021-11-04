@@ -39,7 +39,7 @@ const Router = () => {
                     <RestaurantDetailsPage/>
                 </Route>
 
-                <Route exact path="/profile">
+                <Route exact path="/perfil">
                     <ProfilePage/>
                 </Route>
                 
