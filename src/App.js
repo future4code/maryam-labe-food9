@@ -8,8 +8,8 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <Router />
     </ThemeProvider>
-
   );
 };
 
 export default App;
+
