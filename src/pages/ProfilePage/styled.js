@@ -1,90 +1,194 @@
 import styled from "styled-components";
 
-export const MainContainerProfilePage = styled.div`
-  position: relative;
-  height: 100vh;
-`
-export const EditAddress = styled.img`
-  right: 30px;
-  object-fit: contain;
-  position: absolute;
-`
-export const EditProfile = styled.img`
-  width: 24px;
-  height: 24px;
-  margin: 16px 16px 2px 320px;
-  object-fit: contain;
-  position: absolute;
-`
-export const OrderBar = styled.h4`
-  width: 360px;
-  height: 20px;
-  margin-top: 10px;
-  margin: auto;
-  margin-bottom: 8px;
-  text-align: start;
-  padding-bottom: 5px;
- border-bottom: 1px solid black;
- font-weight: lighter;
-`
-export const UserData = styled.p`
-  margin: 8px 0 0 16px;
-  font-family: Roboto;
-  font-size: 16px;
-  font-weight: bolder;
-  letter-spacing: -0.39px;
-  color: black;
-`
-export const AddresTitle = styled.p`
-  margin: 8px 0px 0px 16px;
-  font-family: "Roboto";
-  font-size: 16px;
-  font-weight: bolder;
-  letter-spacing: -0.39px;
-  color: #b8b8b8;
-`
-export const UserContainer = styled.div`
-  width: 360px;
-  height: 106px;
-  margin: 0px 0;
-  padding: 5px;
-  position: relative;
-`
-export const AddressContainer = styled.div`
+export const Header = styled.div`
   display: flex;
   flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: 76px;
-  padding: 16px 0px;
-  background-color: #eeeeee;
-`
-export const H4 = styled.h4`
-  text-align: center;
-`
-export const RenderContainer = styled.div`
-  box-sizing: border-box;
-  margin-bottom: ${props=> props.bottom};
-  padding: 0px;
-  width: 100vw;
-  min-height: 60vh;
-  overflow:scroll;
-`
-export const Title = styled.h1`
+  align-items: center;
+  color: black;
+`;
+export const Text = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const Container = styled.div`
+  width: 22.5rem;
+  height: 40rem;
+  background-color: white;
+  border: solid 1px var(--black);
+`;
+
+export const History = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const EnderecoCadastrado = styled.p`
+  margin-bottom: 0.25rem;
+  margin-left: 1rem;
+  width: 20.5rem;
+  height: 1.125rem;
   font-family: Roboto;
-  font-size: 16px;
-  font-weight: bolder;
+  font-size: 1rem;
+  font-weight: normal;
   font-stretch: normal;
   font-style: normal;
   line-height: normal;
   letter-spacing: -0.39px;
-  text-align: center;
-  color: #000000;
-`
-export const LogoutContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0px 10px;
-`
+  color: #b8b8b8;
+`;
+export const Endereco = styled.p`
+  margin-left: 1rem;
+  width: 20.5rem;
+  height: 1.125rem;
+  font-family: Roboto;
+  font-size: 1rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.39px;
+  color: var(--black);
+`;
 
+export const PerfilStyle = styled.div`
+  margin-bottom: 0.25rem;
+  margin-left: 1rem;
+  width: 20.5rem;
+  height: 1.125rem;
+  font-family: Roboto;
+  font-size: 1rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.39px;
+  color: var(--black);
+`;
+
+export const Img = styled.img`
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+  float: right;
+  :hover {
+    opacity: 0.5;
+  }
+  :active {
+    opacity: 1;
+  }
+`;
+
+// export const Text = styled.p`
+//   width: 18.5rem;
+//   height: 1.125rem;
+//   opacity: 0.89;
+//   font-family: Roboto;
+//   font-size: 1rem;
+//   font-weight: normal;
+//   font-stretch: normal;
+//   font-style: normal;
+//   line-height: normal;
+//   letter-spacing: -0.39px;
+//   text-align: center;
+//   color: var(--black);
+// `;
+
+export const Pedido = styled.p`
+  margin-bottom: 0.25rem;
+  margin-left: 1rem;
+  margin-top: 1rem;
+  width: 20.5rem;
+  height: 1.125rem;
+  font-family: Roboto;
+  font-size: 1rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.39px;
+  color: var(--black);
+`;
+export const RestaurantName = styled.span`
+  margin-bottom: 0.25rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  font-family: Roboto;
+  font-size: 1rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.39px;
+  color: var(--lipstick);
+`;
+
+export const SubTotal = styled.span`
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  font-family: Roboto;
+  font-size: 1rem;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.39px;
+  color: var(--black);
+`;
+export const Day = styled.span`
+  margin-bottom: 0.25rem;
+  margin-left: 1rem;
+  font-family: Roboto;
+  font-size: 0.75rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.29px;
+  color: var(--black);
+`;
+
+export const PedidosCard = styled.div`
+  width: 22.5rem;
+  height: 6.875rem;
+`;
+export const Rectangle = styled.div`
+  width: 22.5rem;
+
+  border-radius: 8px;
+  border: solid 1px #b8b8b8;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+`;
+
+export const TitleProfile = styled.div`
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  p {
+    width: 5.25rem;
+    height: 1.188rem;
+    font-family: Roboto;
+    font-size: 1rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: -0.39px;
+    text-align: center;
+    justify-items: center;
+    justify-self: center;
+    color: var(--black);
+  }
+`;
+export const CardsStyled = styled.div`
+  padding: 1rem 0;
+`;
+export const CardsStyled2 = styled.div`
+  padding: 1rem 0;
+  background-color: #eeeeee;
+`;

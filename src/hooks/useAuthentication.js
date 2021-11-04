@@ -2,7 +2,7 @@ import {useEffect} from "react"
 import {useHistory} from "react-router-dom"
 
 const useAuthorization =() => {
-    const history =useHistory()
+    const history = useHistory()
 
     useEffect(()=> {
         const token = localStorage.getItem("token")
