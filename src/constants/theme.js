@@ -19,6 +19,7 @@ const theme = createTheme({
     },
     text: {
       primary: neutralColor,
+      secondary: secundaryColor,
     },
   },
 });
