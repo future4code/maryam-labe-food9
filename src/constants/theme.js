@@ -3,6 +3,9 @@ import { primaryColor, neutralColor, secundaryColor } from "./colors";
 
 const theme = createTheme({
   typography: {
+    fontFamily: [
+      'Roboto',
+    ], 
     button: {
       fontSize: 12,
       fontWeight: "bold",
@@ -11,7 +14,7 @@ const theme = createTheme({
   palette: {
     primary: {
       main: primaryColor,
-      contrastText: "white",
+      contrastText: "black",
     },
     secondary: {
       main: secundaryColor,
@@ -19,6 +22,7 @@ const theme = createTheme({
     },
     text: {
       primary: neutralColor,
+      secondary: secundaryColor,
     },
   },
 });
