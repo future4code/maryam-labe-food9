@@ -89,9 +89,6 @@ login(form, clear)
          >
 
             <strong>Entrar</strong></Button>
-            
-    
-            
          </form>
         
          </LoginFormContainer>
