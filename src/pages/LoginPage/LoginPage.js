@@ -82,10 +82,9 @@ login(form, clear)
           color={"primary"}
          >
 
-     <strong>Entrar</strong></Button>
-            
-    
-            
+
+            <strong>Entrar</strong></Button>
+
          </form>
         
          </LoginFormContainer>
