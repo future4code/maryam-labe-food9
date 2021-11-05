@@ -1,9 +1,10 @@
 import React, {useEffect } from "react";
-import { useForm } from "../../hooks/useForm";
 import styled from "styled-components";
 import TextField from "@material-ui/core/TextField";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import useForm from "../../hooks/useForm";
+import { Header } from "../HomePage/styled";
 // import Header from "../Header/Header";
 
 const Container = styled.div`
