@@ -9,11 +9,6 @@ import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined"
 function Footer(props) {
   let history = useHistory();
 
-  /*Props
-    currentPage = "feed" || "cart" || profile
-    Ex: <Footer currentPage='profile'/>
-  */
-
   const ChangePage = (pageToLink) => {
     history.push(`/${pageToLink}`);
   };
@@ -21,22 +16,22 @@ function Footer(props) {
   const GetFooter = () => {
     return (
       <div className="Footer">
-        {props.currentPage === "feed" ? (
-          <IconButton onClick={() => ChangePage("feed")} color="secondary">
+        {props.currentPage === "home" ? (
+          <IconButton onClick={() => ChangePage("home")} color="secondary">
             <HomeOutlinedIcon />
           </IconButton>
         ) : (
-          <IconButton onClick={() => ChangePage("feed")}>
+          <IconButton onClick={() => ChangePage("home")}>
             <HomeOutlinedIcon />
           </IconButton>
         )}
 
         {props.currentPage === "cart" ? (
-          <IconButton onClick={() => ChangePage("cart")} color="secondary">
+          <IconButton onClick={() => ChangePage("carrinho")} color="secondary">
             <ShoppingCartOutlinedIcon />
           </IconButton>
         ) : (
-          <IconButton onClick={() => ChangePage("cart")}>
+          <IconButton onClick={() => ChangePage("carrinho")}>
             <ShoppingCartOutlinedIcon />
           </IconButton>
         )}

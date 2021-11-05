@@ -12,10 +12,13 @@ function ProfilePage() {
 
   const history = useHistory();
   const goToProfileEdit = () => {
-  history.push("/editProfile");
+  // history.push("/editProfile");
+  history.push("/cadastro");
+
   };
   const goToAddressEdit = () => {
-    history.push("/editAddress");
+    //  history.push("/editAddress");
+     history.push("/endereço");
   };
 
   const getProfile = () => {

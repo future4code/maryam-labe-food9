@@ -46,6 +46,7 @@ const Router = () => {
         <Route exact path="/editProfile" component={EditProfile}/>
           {/* <ProfilePage />
         </Route> */}
+        {/* <Route exact path="/editAddress" component={EditAddress}/> */}
 
 
 
