@@ -1,10 +1,17 @@
 import styled from "styled-components";
 
+export const HeaderTitle = styled.div`
+ display: flex;
+  justify-content:space-between;
+  align-items: center;
+  margin: auto;
+  width: 90%;
+`;
 export const Header = styled.div`
-  display: flex;
+ display: flex;
   flex-direction: column;
   align-items: center;
-  color: black;
+  text-align:center;
 `;
 export const Text = styled.div`
   display: flex;

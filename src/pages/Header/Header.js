@@ -2,9 +2,11 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { Typography, IconButton, Divider } from "@material-ui/core";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import "./Header.css"
 
 function Header(props) {
   let history = useHistory();
+
 
   const ChangePage = (pageToLink) => {
     history.push(`${pageToLink}`);

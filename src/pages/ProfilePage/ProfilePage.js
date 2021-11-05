@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import editIcon from "../../assents/editIcon.png";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import { CardsStyled, CardsStyled2, Container, Day, Endereco, EnderecoCadastrado, Header, Img, Pedido, PedidosCard, PerfilStyle, Rectangle, RestaurantName, SubTotal, Text } from "./styled";
-// import Header from "../Header/Header";
-// import Footer from "../Footer/Footer";
+import { CardsStyled, CardsStyled2, Container, Day, Endereco, EnderecoCadastrado, HeaderTitle, Img, Pedido, PedidosCard, PerfilStyle, Rectangle, RestaurantName, SubTotal, Text } from "./styled";
+import Header from "../../pages/Header/Header"
+import Footer from "../../pages/Footer/Footer";
 
 function ProfilePage() {
   const [profile, setProfile] = useState("");
@@ -12,10 +12,13 @@ function ProfilePage() {
 
   const history = useHistory();
   const goToProfileEdit = () => {
-  history.push("/editProfile");
+  // history.push("/editProfile");
+  history.push("/cadastro");
+
   };
   const goToAddressEdit = () => {
-    history.push("/editAddress");
+    //  history.push("/editAddress");
+     history.push("/endereço");
   };
 
   const getProfile = () => {
@@ -110,6 +113,7 @@ function ProfilePage() {
           </Text>
         </CardsStyled>
       </Container>
+      <Footer currentPage="profile"/>
     </>
   );
 }

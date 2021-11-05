@@ -4,9 +4,11 @@ import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import styled from "styled-components";
 import axios from "axios";
-import Header from "../Header/Header";
-import useForm from "../../hooks/useForm";
+import Header from "../../pages/Header/Header";
 import Footer from "../../pages/Footer/Footer"
+import useForm from "../../hooks/useForm";
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
