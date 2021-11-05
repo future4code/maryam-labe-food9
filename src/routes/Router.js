@@ -1,6 +1,5 @@
 import React from "react";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
-
 import CartPage from "../pages/CartPage/CartPage";
 import CreateLoginPage from "../pages/CreateLoginPage/CreateLoginPage"
 import HomePage from "../pages/HomePage/HomePage"
