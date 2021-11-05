@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 `;
@@ -16,12 +17,6 @@ export const ContainerMobile = styled.div`
 `;
 
 export const Header = styled.div`
-  position: absolute;
-  top: 0px;
-
-  /* border: 0.5px solid rgba(0, 0, 0, 0.25); */
-  height: 4rem;
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

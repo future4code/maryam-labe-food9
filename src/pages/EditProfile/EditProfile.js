@@ -5,7 +5,12 @@ import { useHistory } from "react-router-dom";
 import { Container, FormContainer } from "./styled";
 import useForm from "../../hooks/useForm";
 import Header from "../../pages/Header/Header"
-
+import styled from "styled-components";
+import TextField from "@material-ui/core/TextField";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
+import useForm from "../../hooks/useForm";
+import { Header } from "../HomePage/styled";
 
 
 function EditProfile() {

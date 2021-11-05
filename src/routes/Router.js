@@ -44,12 +44,7 @@ const Router = () => {
         </Route>
 
         <Route exact path="/editProfile" component={EditProfile}/>
-          {/* <ProfilePage />
-        </Route> */}
-        {/* <Route exact path="/editAddress" component={EditAddress}/> */}
-
-
-
+          
         <Route exact path="/carrinho">
           <CartPage />
         </Route>
